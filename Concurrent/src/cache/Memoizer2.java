@@ -5,7 +5,13 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CountDownLatch;
-
+/**
+ * 
+ * @author lant
+ *
+ * @param <A>
+ * @param <V>
+ */
 public class Memoizer2<A, V> implements Computable<A, V>
 {
 	 
