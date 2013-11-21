@@ -1,8 +1,12 @@
 
 public class BigThing 
 {
-   public static void main(String[] args)
-   {
+	 private void sayHello()
+	 {
+		   System.out.println("HELLO WORLD");
+	 }
+	 public static void main(String[] args)
+     {
 	   //TODO
-   }
+      }
 }
