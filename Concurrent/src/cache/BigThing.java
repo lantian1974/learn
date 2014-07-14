@@ -9,6 +9,7 @@ public class BigThing
      {
 	   //TODO
 		 //这次能显示汉字了吧！
+		 //ok
 		 //setting the workspace encoding utf-8,then you will see chinese word! 
       }
 }
