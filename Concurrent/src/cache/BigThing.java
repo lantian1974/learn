@@ -8,6 +8,6 @@ public class BigThing
 	 public static void main(String[] args)
      {
 	   //TODO
-		 //MAC下不知支持 汉语吗？ 
+		 //杩欐鑳芥樉绀烘眽瀛椾簡鍚э紒
       }
 }
