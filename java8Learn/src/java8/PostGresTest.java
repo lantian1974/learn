@@ -11,6 +11,7 @@ public class PostGresTest
 	static String url = "jdbc:postgresql://127.0.0.1:5432/right";
     static String usr = "admin";
     static String pwd = "111111"; 
+    //TODO
     private void test() throws SQLException
     {
     	Connection con=null;
