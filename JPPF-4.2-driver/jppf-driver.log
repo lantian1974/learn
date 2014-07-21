@@ -1,0 +1,5 @@
+2014-07-21 15:44:05,974 [INFO ][org.jppf.utils.VersionUtils.logVersionInformation(87)]: --------------------------------------------------------------------------------
+2014-07-21 15:44:05,979 [INFO ][org.jppf.utils.VersionUtils.logVersionInformation(88)]: JPPF Version: 4.2, Build number: 1367, Build date: 2014-07-18 07:24 CEST
+2014-07-21 15:44:05,979 [INFO ][org.jppf.utils.VersionUtils.logVersionInformation(89)]: starting driver with PID=2568, UUID=BB15D471-60FB-C1E2-58AE-DDA6A7AEF1FB
+2014-07-21 15:44:05,979 [INFO ][org.jppf.utils.VersionUtils.logVersionInformation(90)]: --------------------------------------------------------------------------------
+2014-07-21 15:44:10,675 [INFO ][org.jppf.nio.NioConstants.getCheckConnection(83)]: NIO checks are enabled
