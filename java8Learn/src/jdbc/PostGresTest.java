@@ -6,6 +6,9 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.sql.DataSource;
+import org.postgresql.ds.PGPoolingDataSource;
+
 
 public class PostGresTest
 {
@@ -18,6 +21,7 @@ public class PostGresTest
     	Connection con=null;
     	Statement stmt=null;
     	ResultSet rs =null;
+    	
       try
 	   {
           con = DriverManager.getConnection(url,usr,pwd);
@@ -39,6 +43,7 @@ public class PostGresTest
     	   if (con!=null) con.close();
        }
    }
+  
     public void testWithNewJava()
     {
     	
@@ -68,10 +73,67 @@ public class PostGresTest
     	   System.out.println(e);   
        }
     }
+    private void  testPooledConnectionDataSource() throws SQLException
+    {
+    	deployDatasource();
+    	Connection con=ds.getConnection();
+    	excuteQuery(con);
+    	System.out.println("----------------------------------");
+    	excuteQuery(con);
+    	System.out.println("----------------------------------");
+    	excuteQuery(con);
+    	
+    	
+    }
+    private static void excuteQuery(Connection con)
+    {
+    	try(Statement stmt=con.createStatement())
+    	{
+    		ResultSet rs  = stmt.executeQuery("SELECT id,code,name,address FROM test");
+            while (rs.next())
+            {
+                long id = rs.getLong("id");
+                String code = rs.getString("code");
+                String name = rs.getString("name");
+                String address=rs.getString("address");
+                System.out.println("id="+id+",code="+code+",name="+name+",address="+address);
+            }
+    	} catch (SQLException e) 
+    	{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+    static DataSource ds=null;
+    private static  void deployDatasource()
+    {
+    	PGPoolingDataSource pcpds=new PGPoolingDataSource();
+    	pcpds.setPortNumber(5432);
+    	pcpds.setDatabaseName("right");
+    	pcpds.setServerName("127.0.0.1");
+    	pcpds.setUser(usr);
+    	pcpds.setPassword(pwd);
+    	pcpds.setApplicationName("test Application");
+    	ds=pcpds;
+    }
+    public static Connection getDbConnection()
+    {
+    	if (ds==null) deployDatasource();
+    	try {
+			return ds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+    }
+   
     public static void main(String[] args) throws SQLException
     {
     	PostGresTest pgt=new PostGresTest();
     	//pgt.test();
-    	pgt.testWithNewJava();
+    	//pgt.testWithNewJava();
+    	pgt.testPooledConnectionDataSource();
+    	
     }
 }
